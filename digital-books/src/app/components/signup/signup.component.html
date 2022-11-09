@@ -1,0 +1,57 @@
+  <div class="card card-home">
+    <div class="card-body pad">
+        <h4 style= "text-align: center;">{{title}}</h4>
+        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && addUser()" #f="ngForm" novalidate>
+          <div class="form-group">
+            <span style= "margin:0 5px">
+              <input [(ngModel)] = users.roles class="form-check-input" value="reader" type="radio" name="reader" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">Reader</label>
+            </span>
+            <span style= "margin:0 5px">
+              <input [(ngModel)] = users.roles class="form-check-input" value="author" type="radio" name="author" id="flexRadioDefault">
+                  <label class="form-check-label" for="flexRadioDefault1">Author</label>
+            </span>
+          </div>
+          <br>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="UserName" [(ngModel)]="users.username" required #username="ngModel"/>
+          <div class="alert-danger" *ngIf="username.errors && f.submitted">
+            <div *ngIf="username.errors.required">Username is required</div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="Email" [(ngModel)]="users.email" required email #email="ngModel"/>
+          <div class="alert-danger" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="Password" [(ngModel)]="users.password" required #password="ngModel"/>
+          <div class="alert-danger" *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors.required">Password is required</div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group" style= "text-align: center;">
+          <button class="btn btn-success btn-block">Sign Up</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
+  
+    </div>
+  </div>
