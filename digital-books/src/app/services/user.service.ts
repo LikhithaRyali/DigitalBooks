@@ -15,7 +15,7 @@ export class UserService {
   }
 
   getUserProfile(): Observable<any> {
-    return this.http.get(baseUrl + 'user', { responseType: 'text' });
+    return this.http.get(baseUrl + 'guest', { responseType: 'text' });
   }
 
   getReaderProfile(): Observable<any> {

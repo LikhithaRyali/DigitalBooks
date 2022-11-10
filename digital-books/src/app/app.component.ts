@@ -10,23 +10,36 @@ export class AppComponent {
   title = 'digital-books';
   private roles: string[] = [];
   isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
+  showAuthorProfile = false;
+  showReaderProfile = false;
   username?: string;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
+
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
+    console.log(this.isLoggedIn);
+    
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.showAuthorProfile = this.roles.includes('ROLE_AUTHOR');
+      this.showReaderProfile = this.roles.includes('ROLE_READER');
 
       this.username = user.username;
+      const obj = {
+        users:user,
+        roles:this.roles,
+        authorprofile:this.showAuthorProfile,
+        readerprofile:this.showReaderProfile
+      }
+
+      console.log(obj);
+      
+      
     }
   }
 

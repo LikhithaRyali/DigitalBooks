@@ -3,5 +3,5 @@ export default class Users {
     username:String="";
     email:String="";
     password:String="";
-    roles:[]=[];
+    roles: string[] = [];
 }

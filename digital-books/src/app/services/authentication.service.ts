@@ -19,7 +19,7 @@ export class AuthenticationService {
     username:String,
     email:String,
     password:String,
-    roles:[]
+    roles: string[]
   }) {
     return this.http.post(baseUrl + "/sign-up",user,httpOptions);
   }
@@ -28,7 +28,7 @@ export class AuthenticationService {
     username:String,
     email:String,
     password:String,
-    roles:[]
+    roles: string[]
   }) {
     return this.http.post(baseUrl + "/sign-in",user,httpOptions);
   }

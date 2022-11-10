@@ -45,7 +45,7 @@ export class SigninComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;   
         this.users.roles = this.toekenStorage.getUser().roles;
-        this.reloadPage();  
+        // this.reloadPage();  
       }, function(err) {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
@@ -57,7 +57,8 @@ export class SigninComponent implements OnInit {
   }
 
 
-  reloadPage() : void {
-    window.location.reload();
-  }
+  // reloadPage() : void {
+  //   this.toekenStorage.signOut();
+  //   window.location.reload();
+  // }
 }

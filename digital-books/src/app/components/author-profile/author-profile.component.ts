@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import Books from 'src/app/entities/book';
+import { BooksServiceService } from 'src/app/services/books-service.service';
 
 @Component({
   selector: 'app-author-profile',
@@ -8,22 +9,32 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AuthorProfileComponent implements OnInit {
 
-  content?: String
-
-
-  constructor(private userService:UserService) { }
-
-  ngOnInit(): void {
-    const observable = this.userService.getAuthorProfile();
-
+  deletingBook(book,index) {
+    const observable = this.bookService.deletingBook(book)
     observable.subscribe(
       (response) => {
-        this.content = response;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
+        console.log(response);
+        this.books.splice(index,1)
+        
+      }
+    )
+  }
+
+  books : Books[]=[]
+
+
+  constructor(private bookService: BooksServiceService) { }
+
+  ngOnInit(): void {
+    const promise = this.bookService.getMyBooks();
+    promise.subscribe(
+      (response) => {
+        console.log(response);
+        this.books = response as Books[]
+        
       }
     )
   }
 
 }
+

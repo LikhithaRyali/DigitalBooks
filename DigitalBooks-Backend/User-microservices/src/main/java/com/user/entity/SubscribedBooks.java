@@ -1,5 +1,7 @@
 package com.user.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +16,7 @@ public class SubscribedBooks {
 	
 	Integer userId;
 	Integer bookId;
-	String email;
+	LocalDate subscribedDate ;
 	
 	
 	public Integer getSubscriptionId() {
@@ -35,22 +37,21 @@ public class SubscribedBooks {
 	public void setBookId(Integer bookId) {
 		this.bookId = bookId;
 	}
-	public String getEmail() {
-		return email;
+	public LocalDate getSubscribedDate() {
+		return subscribedDate;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSubscribedDate(LocalDate subscribedDate) {
+		this.subscribedDate = subscribedDate;
 	}
-	public SubscribedBooks(Integer subscriptionId, Integer userId, Integer bookId, String email) {
+	public SubscribedBooks(Integer subscriptionId, Integer userId, Integer bookId, LocalDate subscribedDate) {
 		super();
 		this.subscriptionId = subscriptionId;
 		this.userId = userId;
 		this.bookId = bookId;
-		this.email = email;
+		this.subscribedDate = subscribedDate;
 	}
 	public SubscribedBooks() {
 		super();
 	}
-	
 	
 }

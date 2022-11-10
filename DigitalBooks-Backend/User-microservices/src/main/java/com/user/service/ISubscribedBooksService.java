@@ -1,15 +1,18 @@
 package com.user.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.user.entity.SubscribedBooks;
 
 public interface ISubscribedBooksService {
 
-	public List<SubscribedBooks> addSubscribedBook(List <SubscribedBooks> subscribedBook);
+	public SubscribedBooks addSubscribedBook(SubscribedBooks subscribedBook);
 	
-	Optional<SubscribedBooks> getSubcribedBookById(Integer id);
+	
+	//public SubscribedBooks subscribedUserId(Integer uid);
+	Optional<SubscribedBooks> getSubcribedUserId(Integer id);
+	
+	public SubscribedBooks subscribedId(Integer sid);
 	
 	public void cancelSubscription(Integer id);
 }

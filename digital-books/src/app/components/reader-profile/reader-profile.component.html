@@ -1,1 +1,32 @@
-<p>reader-profile works!</p>
+<div class="card card-home">
+    <div class="card-body container">
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+          <br>
+          <h4>{{title}}</h4>
+          <ul class="list-group">
+            <li *ngFor= "let s of subscription; index as i" class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <img src= "..." class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                          <h5 class="card-title"></h5>
+                          <p class="card-text"></p>
+                          <span>
+                            <button (click)="cancelSubscription(s,i)" type="button" style = "color:rgb(9, 63, 47);background-color: mediumseagreen;" class="btn">Update</button> 
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+  </div>

@@ -1,0 +1,54 @@
+<div class="card card-home">
+    <div class="card-body container">
+        <h1 style = "text-align: center;">{{title}}</h1>
+
+        <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Book Name</span>
+            <input [(ngModel)] = book.bookName type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <br>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Book Logo</span>
+            <input  [(ngModel)] = book.bookImage type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <br>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Book Price</span>
+            <input  [(ngModel)] = book.bookPrice type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <br>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Publisher</span>
+            <input  [(ngModel)] = book.bookPublisher type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <br>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Category</span>
+            <input  [(ngModel)] = book.bookCategory type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <br>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Published Date</span>
+            <input  [(ngModel)] = book.bookPublishedDate type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <br>
+          <label style="padding-left: 70px;">Status</label>
+          <div style="padding-left: 70px;" class="form-check">
+            
+            <input  [(ngModel)] = book.bookStatus  class="form-check-input" value="Active" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Active
+            </label>
+          </div>
+          <div style="padding-left: 70px;" class="form-check">
+            <input [(ngModel)] = book.bookStatus   class="form-check-input" value="Block" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+              Block
+            </label>
+          </div>
+         
+            <button (click)="updateBook()" style="text-align: center;" type="button" class="btn btn-outline-success">Update</button>
+        
+    </div>
+  </div>

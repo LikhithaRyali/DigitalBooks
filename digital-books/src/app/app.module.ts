@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from './helpers/http.interceptor';
 import { ReaderProfileComponent } from './components/reader-profile/reader-profile.component';
 import { AuthorProfileComponent } from './components/author-profile/author-profile.component';
+import { CreateBookComponent } from './components/create-book/create-book.component';
+import { UpdateBookComponent } from './components/update-book/update-book.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { AuthorProfileComponent } from './components/author-profile/author-profi
     SearchComponent,
     ReaderProfileComponent,
     AuthorProfileComponent,
+    CreateBookComponent,
+    UpdateBookComponent,
   ],
   imports: [
     BrowserModule,

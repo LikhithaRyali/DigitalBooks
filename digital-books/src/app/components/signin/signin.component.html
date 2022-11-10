@@ -2,6 +2,17 @@
     <div class="card-body pad">
         <h6>{{title}}</h6>
         <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && userSignIn()" #f="ngForm" novalidate >
+        <!-- <div class="form-group">
+            <span style= "margin:0 5px">
+                <input [(ngModel)] = users.roles class="form-check-input" value="reader" type="radio" name="reader" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">Reader</label>
+            </span>
+            <span style= "margin:0 5px">
+                <input [(ngModel)] = users.roles class="form-check-input" value="author" type="radio" name="author" id="flexRadioDefault">
+                <label class="form-check-label" for="flexRadioDefault1">Author</label>
+            </span>
+        </div>
+        <br> -->
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" name="username" [(ngModel)]="users.username" required #username="ngModel"

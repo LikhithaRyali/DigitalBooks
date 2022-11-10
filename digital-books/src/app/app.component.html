@@ -1,4 +1,42 @@
 <div class = "bg-image">
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+    <nav class="navbar navbar-expand-lg bg-light bg-color">
+        <div class="container-fluid">
+          <a style = "color: honeydew;" class="navbar-brand" href="#">Digital Books</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup" routerLinkActive="active">
+            <div class="navbar-nav">
+              <a style = "color: honeydew;" class="nav-link active" routerLink = "/home" aria-current="page" href="#">Home</a>
+            </div>
+            <div class="navbar-nav" *ngIf="showAuthorProfile">
+                <a style = "color: honeydew;" class="nav-link active" routerLink = "/author" aria-current="page" href="#">Author</a>
+            </div>
+            <div class="navbar-nav" *ngIf="showReaderProfile">
+                <a style = "color: honeydew;" class="nav-link active" routerLink = "/reader" aria-current="page" href="#">Reader</a>
+            </div>
+            
+          </div>
+          <form class="d-flex" *ngIf="!isLoggedIn">
+            <button class="btn btn-success margin-hyperlinks" routerLink = "/signin" type="button">
+              Sign-In
+            </button>
+            <button class="btn btn-danger margin-hyperlinks" routerLink = "/signup" type="button">
+              Sign-Up
+            </button>
+          </form>
+        </div>
+
+        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+            <li class="nav-item">
+              <button (click)="logout()" class="btn btn-danger margin-hyperlinks" type="button">
+                LogOut
+              </button>
+            </li>
+          </ul>
+      </nav>
+      
+      <div class="container">
+          <router-outlet></router-outlet>
+      </div>
 </div>

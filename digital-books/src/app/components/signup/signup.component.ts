@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
   addUser() : void {
     const observable = this.authenticationService.userSignUp(this.users);
     console.log(this.users);
-    console.log(observable);
+    
     
     observable.subscribe(
       (response : any) => {
@@ -38,6 +38,9 @@ export class SignupComponent implements OnInit {
     ) 
   }
 
+  getRole(role) {
+    const roles = this.users.roles.push(role);  
+  }
 
 
   constructor(private authenticationService: AuthenticationService) { }

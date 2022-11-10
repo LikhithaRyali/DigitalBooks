@@ -1,7 +1,5 @@
 package com.user.controller;
 
-import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import com.user.entity.Books;
 import com.user.entity.SubscribedBooks;
 import com.user.service.ISubscribedBooksService;
 
 @RestController
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false")
-@RequestMapping("/reader/{id}")
+@CrossOrigin(origins= {"*"})
+@RequestMapping("/reader")
 public class ReaderController {
 	
 	@Autowired
@@ -37,15 +37,20 @@ public class ReaderController {
 	}
 	
 	@PostMapping("{bookId}/subscribe")
-	public List<SubscribedBooks> subscribingBook(@PathVariable Integer id, @RequestBody List<SubscribedBooks> books) {
-		List<SubscribedBooks> myBooks = restTemp.getForObject("http://localhost:9092/digitalbooks/read/" + id, List.class);
-		return subscribedBooksService.addSubscribedBook(myBooks);
+	public SubscribedBooks subscribingBook(@PathVariable("id") Integer readerId, @PathVariable("bookId") Integer bookId, @RequestBody SubscribedBooks books) {
+		Books myBooks = restTemp.getForObject("http://localhost:9092/digitalbooks/read/" + bookId, Books.class);
+		SubscribedBooks newBook = new SubscribedBooks();
+		newBook.setUserId(readerId);
+		newBook.setBookId(bookId);
+		java.time.LocalDate date = java.time.LocalDate.now();
+		newBook.setSubscribedDate(date);
+		return subscribedBooksService.addSubscribedBook(newBook);
 		
 	}
 	
 	@GetMapping("/books/{subscription-id}/read")
-	public Optional<SubscribedBooks> myBookById(@PathVariable Integer id) {
-		Optional<SubscribedBooks> bookById = subscribedBooksService.getSubcribedBookById(id);
+	public SubscribedBooks myBookById(@PathVariable Integer id) {
+		SubscribedBooks bookById = subscribedBooksService.subscribedId(id);
 		return bookById;
 	}
 	

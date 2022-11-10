@@ -8,11 +8,10 @@ const baseUrl = 'http://localhost:9091/author';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthorBooksServiceService {
+export class BooksServiceService {
 
-  authorId = this.author.getUser().id;
 
-  saveBook(book: {
+  addingBook(book: {
     bookId:number,
     bookName:String,
     bookImage:String,
@@ -22,16 +21,22 @@ export class AuthorBooksServiceService {
     bookStatus:String,
     bookPublishedDate:Date
   }) {
-    return this.http.post(baseUrl + "/" + this.authorId + "/add/book",book)
+    return this.http.post(baseUrl + "/add/book",book)
   }
 
   getMyBooks() {
-    return this.http.get(baseUrl + "/" + this.authorId + "/mybooks");
+    return this.http.get(baseUrl + "/mybooks");
   }
 
-  deleteBook(book:any) {
-    return this.http.delete(baseUrl + "/" + this.authorId + )
+  deletingBook(book:any) {
+    return this.http.delete(baseUrl + "/delete" + book.bookId )
   }
+
+  updatingBook(book:any) {
+    return this.http.put(baseUrl + "/books" + book.bookId,book);
+  }
+
+  
 
   constructor(public http:HttpClient, private author:TokenStorageService) { }
 }

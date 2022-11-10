@@ -1,4 +1,4 @@
-package com.book.entity;
+package com.user.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;

@@ -11,5 +11,5 @@ import com.user.entity.Role;
 @Repository
 public interface IRoleRepo extends JpaRepository<Role, String> {
 
-	Optional<Role> findByName(ERole role);
+	Optional<Role> findByName(ERole name);
 }

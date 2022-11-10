@@ -4,11 +4,11 @@
         <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && addUser()" #f="ngForm" novalidate>
           <div class="form-group">
             <span style= "margin:0 5px">
-              <input [(ngModel)] = users.roles class="form-check-input" value="reader" type="radio" name="reader" id="flexRadioDefault1">
+              <input #input (change) = "getRole(input.value);input.value=''" class="form-check-input" value="reader" type="radio" name="reader" id="flexRadioDefault1">
                   <label class="form-check-label" for="flexRadioDefault1">Reader</label>
             </span>
             <span style= "margin:0 5px">
-              <input [(ngModel)] = users.roles class="form-check-input" value="author" type="radio" name="author" id="flexRadioDefault">
+              <input #input (change) = "getRole(input.value);input.value=''" class="form-check-input" value="author" type="radio" name="author" id="flexRadioDefault">
                   <label class="form-check-label" for="flexRadioDefault1">Author</label>
             </span>
           </div>

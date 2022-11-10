@@ -20,20 +20,26 @@ public class SubscribedBooksServiceImpl implements ISubscribedBooksService {
 	ISubscribedBookRepo subscribedBooksRepo;
 
 	@Override
-	public List<SubscribedBooks> addSubscribedBook(List<SubscribedBooks> subscribedBook) {
-		List<SubscribedBooks> book = subscribedBooksRepo.saveAll(subscribedBook);
+	public void cancelSubscription(Integer id) {
+		subscribedBooksRepo.deleteById(id);
+		
+	}
+
+	@Override
+	public SubscribedBooks addSubscribedBook(SubscribedBooks subscribedBook) {
+		SubscribedBooks book = subscribedBooksRepo.save(subscribedBook);
 		return book;
 	}
 
 	@Override
-	public Optional<SubscribedBooks> getSubcribedBookById(Integer id) {
-		return subscribedBooksRepo.findById(id);
+	public Optional<SubscribedBooks> getSubcribedUserId(Integer uid) {
+		return subscribedBooksRepo.findById(uid);
 	}
 
 	@Override
-	public void cancelSubscription(Integer id) {
-		subscribedBooksRepo.deleteById(id);
-		
+	public SubscribedBooks subscribedId(Integer sId) {
+		SubscribedBooks subscriptionId = subscribedBooksRepo.findBySubscriptionId(sId);
+		return subscriptionId;
 	}
 	
 	

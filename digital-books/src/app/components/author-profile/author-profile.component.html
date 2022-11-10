@@ -1,25 +1,26 @@
-<li  class="list-group-item">
-    <span>
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <!--*ngFor= "let b of books; index as i"-->
-          </div>
-    </span>
-    <span>
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <!--*ngFor= "let b of books; index as i"-->
-          </div>
-    </span>
-    
-</li>
+<div class="card card-home">
+    <div class="card-body container">
+        <button type="button" routerLink="/newbook" style = "margin: 10px 20px ;color:rgb(9, 63, 47);background-color: mediumseagreen;" class="btn">Create New Book</button>
+        <ul class="list-group">
+            <li *ngFor= "let b of books; index as i" class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <img src= {{b.bookImage}} class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                          <h5 class="card-title">Name: {{b.bookName}}</h5>
+                          <p class="card-text">Price: {{b.bookPrice}}</p>
+                          <span>
+                            <button routerLink="/updatebook" type="button" class="btn btn-secondary">Update</button>
+                          </span>
+                          <span>
+                            <button (click)="deletingBook(b,i)" type="button" style = "color:rgb(9, 63, 47);background-color: mediumseagreen;" class="btn">Update</button> 
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+  </div>
