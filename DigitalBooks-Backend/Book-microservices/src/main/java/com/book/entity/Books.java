@@ -29,6 +29,7 @@ public class Books implements Serializable {
 	private Double bookPrice;
 	private String bookPublisher;
 	private String bookCategory;
+	
 	private String bookStatus;
 	private LocalDate bookPublishedDate;
 	
